@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Http\Request;
@@ -27,3 +28,7 @@ Route::apiResource('/categories', CategoryController::class );
 
 // PRODUCTS
 Route::apiResource('/products', ProductController::class );
+
+
+Route::post('/auth/register', [ AuthController::class, 'register' ]);
+Route::post('/auth/login', [ AuthController::class, 'login' ]);
