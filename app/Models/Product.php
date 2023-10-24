@@ -10,7 +10,15 @@ class Product extends Model
 {
     use HasFactory;
 
-    // TODO: agregar fillables
+    protected $fillable = [
+        'name',
+        'description',
+        'slug',
+        'category_id',
+        'stock',
+        'image',
+        'price'
+    ];
 
     // relaciones
     public function category(): HasOne
