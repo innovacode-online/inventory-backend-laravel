@@ -30,9 +30,16 @@ class AuthController extends Controller
         ]);
     }
 
-    public function logout()
+    public function logout(Request $request)
     {
 
+        $user = $request->user();
+        $user->currentAccessToken()->delete();
+
+        return response([
+            'message' => 'Sesion cerrada',
+            'emailVerfy' => $user['email_verified_at']
+        ],201);
     }
 
     public function register( AuthRegisterRequest $request )
