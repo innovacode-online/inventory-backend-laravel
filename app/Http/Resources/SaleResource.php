@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use App\Models\ProductSale;
+use App\Models\Sale;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -22,7 +23,9 @@ class SaleResource extends JsonResource
             'id' => $this->id,
             'client' => $this->client,
             'total' => $this->total,
-            'details' => ProductSale::where('sale_id', $this->id)->get(),
+            'products' => new ProductSaleCollection(Sale::find($this->id)->products),
+            // 'products' => Sale::find($this->id)->products,
+            
             'createdAt' => $this->created_at,
         ];
     }
