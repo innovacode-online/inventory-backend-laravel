@@ -40,15 +40,15 @@ class CategoryController extends Controller
     {
         $category = Category::where('id', $term)
             ->orWhere('slug', $term)
-            ->get()[0];
+            ->get();
 
-        if (!$category) {
+        if ( count($category) == 0 ) {
             return response()->json([
                 'message' => 'No se encontro la categoría'
             ], 404);
         }
 
-        return $category;
+        return $category[0];
     }
 
     /**
@@ -58,7 +58,7 @@ class CategoryController extends Controller
     {
         $category = Category::find($id);
 
-        if (!$category) {
+        if ( count($category) == 0 ) {
             return response()->json([
                 'message' => 'No se encontro la categoría'
             ], 404);
@@ -80,8 +80,8 @@ class CategoryController extends Controller
     public function destroy(string $id)
     {
         $category = Category::find($id);
-
-        if (!$category) {
+        
+        if ( count($category) == 0 ) {
             return response()->json([
                 'message' => 'No se encontro la categoría'
             ], 404);
