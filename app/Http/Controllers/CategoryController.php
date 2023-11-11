@@ -58,7 +58,7 @@ class CategoryController extends Controller
     {
         $category = Category::find($id);
 
-        if ( count($category) == 0 ) {
+        if ( $category ) {
             return response()->json([
                 'message' => 'No se encontro la categoría'
             ], 404);
@@ -81,7 +81,7 @@ class CategoryController extends Controller
     {
         $category = Category::find($id);
         
-        if ( count($category) == 0 ) {
+        if ( !$category ) {
             return response()->json([
                 'message' => 'No se encontro la categoría'
             ], 404);
