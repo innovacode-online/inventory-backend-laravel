@@ -29,7 +29,7 @@ class ProductController extends Controller
         $product = Product::create($request->all());
 
         return response([
-            'message' => 'Se creo la categoría',
+            'message' => 'Se creo el producto',
             'product' => $product
         ]);
 

@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ImageController;
 use App\Http\Controllers\SaleController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -47,3 +48,4 @@ Route::post('/auth/login', [AuthController::class, 'login']);
 
 // SALES
 Route::apiResource('/sales', SaleController::class );
+Route::apiResource('/upload', ImageController::class );
